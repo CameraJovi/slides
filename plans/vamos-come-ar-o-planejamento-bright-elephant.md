@@ -1,3 +1,124 @@
+# Plano — Funcionalidades representadas pelo produto real (revisão 6)
+
+## Entrega desta etapa e precedência
+
+Esta revisão incorpora ao planejamento a substituição das interfaces recriadas por
+**capturas e recortes da interface real**, com dados de demonstração. A implementação
+visual dos slides será uma etapa posterior; esta entrega altera somente o planejamento.
+
+Ordem das fontes de verdade: pitch e narrativa → produto real → contexto e planejamento →
+implementação atual dos slides. Referências narrativas: `contexto/deepy-pitch-completo.md`
+e `contexto/deepy-contexto-produto.md`.
+
+Neste ambiente, o produto foi localizado na pasta vizinha `../FrontCameraJovi/`:
+frontend em `camerajoviUpgrade/`, backend em `python/`. A revisão de referência inspecionada
+é o commit `c717a18`, sem alterações locais no momento da consulta. Os caminhos de produto
+citados abaixo são relativos a essa pasta.
+
+Permanecem os 14 slides e a sequência da revisão 5, incluindo Math Resolver → Caderno
+Inteligente → Smart Scan. Preservar a identidade visual externa, a família de fontes do
+deck e os exemplos aprovados de Cálculo, Design System e treino de pitch.
+O fechamento e seus QR codes ficam integralmente fora desta revisão.
+
+As revisões anteriores ficam preservadas como histórico. Esta revisão substitui suas
+instruções de preservar ou reconstruir mockups de funcionalidades, inclusive o botão
+artificial de PDF, o empilhamento e o realce próprio dos Flashcards e a referência do
+Code Reviewer como fonte de estilo para as demais interfaces. O produto passa a ser a
+fonte visual; a composição externa continua seguindo a apresentação.
+
+## Divergências verificadas e decisões do usuário
+
+| Tema | Evidência no produto inspecionado | Decisão para a apresentação |
+|---|---|---|
+| Code Enhancer / Jovi Code | `camerajoviUpgrade/app/codigo/page.js` contém os painéis “Explicar código” e “Jovi Code”, com Antes/Depois. `python/api.py`, `python/jovi_ai.py` e `python/code_analysis.py` implementam a análise de código; o prompt exige correções mínimas e evita refatoração por preferência. | O usuário identificou Code Enhancer como Jovi Code e escolheu usar o Antes/Depois real. Manter o nome do pitch, substituindo a otimização de código já funcional por uma correção compatível com o backend. Não representar dois módulos independentes. |
+| Exportação PDF | `/resumo` mostra o conteúdo e a ação de salvar no Caderno; o salvamento da API gera texto `.txt`. Não foi localizada exportação PDF nessa implementação. | O usuário confirmou que PDF está nos TODOs e autorizou mantê-lo. Mostrar “Exportação PDF · prevista” fora da captura, sem inventar um botão no produto. A origem dessa previsão é a confirmação do usuário, não uma funcionalidade verificada. |
+| Switch Mode | `app/services/gradeAulas.js` e `app/services/captureSession.js` associam a captura à disciplina pelo horário. A câmera permite escolher a ferramenta manualmente; não foi localizada recomendação automática de ferramenta. | Preservar o fluxo narrativo, sinalizando a sugestão automática de ferramenta como “conceito proposto”. Apoiar a parte implementada com recortes da grade e da disciplina sugerida. |
+| SmartPix | `app/components/CorpoCamera.js` identifica possíveis e-mails e telefones. `ModalSmartPix` permite conferir, editar e copiar. “Abrir banco” exibe uma mensagem de simulação; não há tratamento específico de CPF. | Usar o modal real com e-mail demonstrativo, identificar “Abrir banco · simulação” e manter CPF somente como capacidade prevista na narrativa. Preservar a ressalva de que detectar um dado não confirma uma chave Pix. |
+
+Nos caminhos abreviados `app/...` desta revisão, a raiz é `camerajoviUpgrade/`.
+
+## Mapa de adaptação dos slides
+
+A numeração abaixo é a posição em `src/App.tsx`, não o número no nome do arquivo.
+Há sete representações próprias de funcionalidades e um diagrama conceitual a revisar.
+`Slide05Solution.tsx` não integra a sequência ativa e não deve ser reintroduzido ou
+alterado nesta etapa.
+
+| Posição e componente atual | Representação atual e fonte real | Adaptação para execução posterior |
+|---|---|---|
+| **5 — Switch Mode** (`Slide06SwitchMode`) | Diagrama conceitual, não uma tela do produto. Fontes: `/horarios`, câmera no modo Estudante, `/salvar` e serviços de grade/captura. | Preservar a sequência narrativa com recortes da aula cadastrada e da disciplina sugerida. Usar terça-feira, Cálculo, 07:20–08:40 e captura às 07:40. Identificar o trecho de sugestão automática da ferramenta como “conceito proposto”, sem criar controles de recomendação ou automação. |
+| **6 — Math Resolver** (`Slide07MathResolver`) | Lousa ilustrada e painel de resolução próprio. Fonte: `app/equacao/page.js`, rota `/equacao`, com `PreviewCaptura`, etapas e resultado. | Compor a imagem de entrada com um recorte ampliado da expressão, etapas explicadas e resultado da tela “Resolver Equação”. Preservar `2x + 6 = 14`, com resultado `x = 4`, usando a hierarquia real em vez das linhas e marcadores criados para o slide. |
+| **7 — Caderno Inteligente** (`Slide13Notebook`) | Lista artificial de matérias, tipos e contagens. Fontes: `app/caderno/page.js` e `app/components/ItemHistorico.js`. | Mostrar Cálculo selecionado nos filtros reais e o registro da resolução anterior aberto, com foto e conteúdo. As contagens devem corresponder aos dados demonstrativos. Retirar a indicação fictícia de PDF disponível. |
+| **8 — Smart Scan** (`Slide08Summary`) | Painel próprio com “Conceito”, “Pontos-chave” e “Exportar PDF”. Fonte: `app/resumo/page.js`, rota `/resumo`. | Usar “Resumo Inteligente”, assunto Design System, seção “Conteúdo identificado” e ação real de salvar no Caderno. Incorporar o conteúdo aprovado da revisão 5 ao texto do resumo, sem criar seções de interface inexistentes. Manter “Exportação PDF · prevista” como chamada editorial externa. |
+| **9 — Flashcards** (`Slide09Flashcards`) | Cartões desenhados para o deck, com empilhamento e verso âmbar próprios. Fontes: `app/flashcard/page.js` e `app/components/CardFlashcard.js`. | Capturar o mesmo cartão antes e depois de acionar “Girar”. Exibir os dois estados lado a lado com rótulos externos “Frente” e “Verso”. Manter o exemplo de treino de pitch e usar o visual real do componente, sem reproduzir o empilhamento ou a coloração artificial. Os dois recortes representam estados sucessivos, não uma tela simultânea do produto. |
+| **10 — Code Reviewer** (`Slide10Code`) | Dois painéis próprios de código e diagnóstico. Fonte: `/codigo`, painel “Explicar código”. | Destacar “O que este código faz” e o diagnóstico expandido em “Pontos para revisar”. Manter o exemplo de acumulação com `=+`, incluindo inicialização das variáveis para isolar o erro. A função narrativa deste slide é explicar o problema. |
+| **11 — Code Enhancer** (`Slide15CodeEnhancer`) | Otimização de loop para list comprehension. Fonte escolhida: `/codigo`, painel “Jovi Code”. | Mostrar recortes dos estados “Antes” e “Depois” da mesma análise do slide anterior, corrigindo `=+` para `+=`. Preservar o título do pitch e os nomes reais dentro da captura. Trocar “Um código que já funciona — só que melhor” e “Funciona → otimizado” por uma mensagem coerente com a correção: “Da análise ao código corrigido”. Manter a indicação real de que a correção é uma sugestão. |
+| **13 — SmartPix** (`Slide12SmartPix`) | Moldura de celular e interface de detecção próprias. Fontes: `app/components/ModalSmartPix.js` sobre a câmera em `CorpoCamera.js`. | Usar o modal “Possível chave Pix encontrada”, com e-mail demonstrativo, campo editável e ações existentes. Preservar a conferência da chave e a mensagem de ausência de transação/acesso a dados bancários. Identificar externamente “Abrir banco · simulação”. Não simular reconhecimento de CPF como recurso atual. |
+
+## Produção dos recortes na etapa posterior
+
+- Renderizar o frontend original em ambiente de demonstração. Preparar entradas e
+  respostas compatíveis com os contratos existentes, sem alterar JSX, estilos ou
+  comportamento para fabricar resultados. Dados demonstrativos não são evidência de
+  uma execução real de IA.
+- Capturar em viewport mobile de **390 × 844**, com densidade **3×**. Obter os estados
+  por rolagem e pelos controles reais; guardar a captura de origem junto ao recorte.
+- Recortar e ampliar regiões relevantes, mantendo proporções, textos, cores e
+  hierarquia. Legendas e setas editoriais ficam fora das capturas. Não substituir
+  textos internos, adicionar botões ou combinar fragmentos como se fossem uma tela real.
+- Compor os recortes diretamente no slide, sem reconstruir um celular. Manter a
+  tipografia do produto nas imagens e a tipografia do deck nos títulos e legendas.
+  Ampliar o conteúdo essencial em vez de reduzir uma tela inteira até ficar ilegível.
+- Manter continuidade nos dados: a mesma captura matemática alimenta o Caderno;
+  Reviewer e Jovi Code usam a mesma análise; frente e verso pertencem ao mesmo cartão.
+- Guardar as imagens localmente no deck e documentar rota, estado, dados de demonstração,
+  revisão do produto, viewport e região recortada. A apresentação não dependerá de
+  câmera, backend ou respostas de IA durante o pitch.
+- O reaproveitamento será visual, por capturas rastreáveis. Não compartilhar componentes
+  entre Next.js e Vite, criar APIs ou implementar os recursos pendentes do produto
+  como parte desta alteração de apresentação.
+
+## Critérios de validação e estado da entrega
+
+Para a execução visual posterior:
+
+- Conferir cada representação com a rota e o estado documentados. Diferenciar dados
+  de demonstração de resultados obtidos por execução real da IA.
+- Validar a continuidade Math Resolver → Caderno, Reviewer → Jovi Code e frente → verso.
+- Conferir legibilidade em **1920 × 1080** e **1366 × 768**, sem cortes de explicações,
+  ressalvas ou ações essenciais. Não resolver falta de espaço reduzindo telas inteiras.
+- Confirmar que PDF previsto, sugestão de ferramenta proposta e abertura bancária
+  simulada estão diferenciados das funcionalidades atuais.
+- Após implementar os visuais, executar o build e percorrer os 14 slides pelo teclado,
+  verificando imagens locais, composição e ausência de overflow. Conferir a preservação
+  da sequência e do fechamento, sem acrescentar alterações de CTA a esta revisão.
+
+### Implementação iniciada — ajustes editoriais
+
+- Switch Mode: disciplina reconhecida pelo horário; sugestão de ferramenta identificada
+  no diagrama como “Conceito proposto”. A nota externa descreve a escolha manual atual.
+- Smart Scan: botão artificial “Exportar PDF” removido; indicação externa
+  “Exportação PDF · prevista”. A frase de apoio passa a descrever a revisão no Caderno.
+- Reviewer e Code Enhancer: mesmo exemplo Python com variáveis inicializadas e correção
+  mínima de `=+` para `+=`. Enhancer usa “Da análise ao código corrigido”, a identificação
+  Jovi Code e a ressalva de revisão da sugestão.
+- SmartPix: texto distingue possível e-mail/telefone de chave confirmada, identifica
+  abertura bancária simulada e CPF previsto. O exemplo usa `estudos@example.com`.
+- Caderno: retirada a indicação de PDF atualmente disponível na lista ilustrativa.
+- As indicações editoriais usam `FeatureNote`, fora das representações da interface.
+  Sequência, estilos globais e fechamento preservados.
+
+**Estado atual: implementação parcial.** As representações antigas ainda precisam ser
+substituídas pelos recortes reais; esses ajustes de conteúdo não equivalem à conclusão
+da revisão visual. Math Resolver e Flashcards aguardam as capturas. O ambiente isolado
+de preparação está descrito em `scripts/product-captures/README.md`.
+
+O navegador integrado continuou indisponível na retomada. O usuário escolheu habilitá-lo
+em vez de usar Edge headless. Capturas e validação em tela cheia permanecem pendentes;
+o produto original permanece sem alteração. Isso não marca o deck como finalizado.
+
+---
+
 # Plano — Sequência e ajustes de conteúdo e cor (revisão 5)
 
 ## Referências e decisões

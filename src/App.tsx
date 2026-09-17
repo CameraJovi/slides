@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from "react"
 import Slide01Cover from "./slides/Slide01Cover"
 import Slide02Problem from "./slides/Slide02Problem"
 import Slide03Persona from "./slides/Slide03Persona"
-import Slide04Validation from "./slides/Slide04Validation"
 import Slide06SwitchMode from "./slides/Slide06SwitchMode"
 import Slide07MathResolver from "./slides/Slide07MathResolver"
 import Slide08Summary from "./slides/Slide08Summary"
@@ -18,7 +17,6 @@ const slides = [
   Slide01Cover,
   Slide02Problem,
   Slide03Persona,
-  Slide04Validation,
   Slide06SwitchMode,
   Slide07MathResolver,
   Slide13Notebook,

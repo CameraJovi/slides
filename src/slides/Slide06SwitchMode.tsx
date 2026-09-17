@@ -1,14 +1,14 @@
 import SlideLayout from "../components/SlideLayout"
+import FeatureNote from "../components/FeatureNote"
 import { Panel, Lead } from "../components/ui"
 import { Clock, Camera, Sparkles, Function, Check, ArrowRight } from "../components/icons"
 
-// A concrete run of the flow: context (Tue 07:20 Calc) → capture (arrives 07:40) →
-// switch recognises it → suggests the right tool → result.
+// The schedule association exists; automatic tool selection is a proposed flow.
 const flow = [
-  { icon: <Clock className="h-6 w-6" />, label: "Contexto", value: "Terça · 07:20 · Cálculo" },
+  { icon: <Clock className="h-6 w-6" />, label: "Contexto", value: "Cálculo · terça · 07:20–08:40" },
   { icon: <Camera className="h-6 w-6" />, label: "Captura", value: "Chega 07:40, foto da lousa" },
-  { icon: <Sparkles className="h-6 w-6" />, label: "Switch", value: "Reconhece o momento" },
-  { icon: <Function className="h-6 w-6" />, label: "Ferramenta", value: "Sugere o Math Resolver", accent: true },
+  { icon: <Sparkles className="h-6 w-6" />, label: "Switch", value: "Identifica a disciplina" },
+  { icon: <Function className="h-6 w-6" />, label: "Ferramenta", value: "Sugere o Math Resolver", accent: true, proposed: true },
   { icon: <Check className="h-6 w-6" />, label: "Resultado", value: "Passo a passo" },
 ]
 
@@ -16,7 +16,7 @@ export default function Slide06SwitchMode() {
   return (
     <SlideLayout index={6} kicker="A solução" title="Switch Mode" glow="left">
       <div className="flex flex-col gap-9">
-        <Lead className="max-w-[54ch]">O contexto certo ativa a ferramenta certa.</Lead>
+        <Lead className="max-w-[54ch]">Do contexto da aula à ferramenta de estudo.</Lead>
 
         <div className="flex flex-col items-stretch gap-3 lg:flex-row lg:items-center">
           {flow.map((s, i) => (
@@ -31,6 +31,11 @@ export default function Slide06SwitchMode() {
                     {s.label}
                   </div>
                   <div className="text-sm font-medium text-white">{s.value}</div>
+                  {s.proposed && (
+                    <div className="mt-2 text-xs font-medium" style={{ color: "var(--color-lime-soft)" }}>
+                      Conceito proposto
+                    </div>
+                  )}
                 </div>
               </Panel>
               {i < flow.length - 1 && (
@@ -40,9 +45,9 @@ export default function Slide06SwitchMode() {
           ))}
         </div>
 
-        <div className="font-mono text-sm" style={{ color: "var(--color-mute)" }}>
-          Você continua no controle — automatize ou escolha outra ferramenta.
-        </div>
+        <FeatureNote>
+          Hoje, o horário sugere a disciplina e você escolhe a ferramenta.
+        </FeatureNote>
       </div>
     </SlideLayout>
   )

@@ -22,16 +22,18 @@ export default function Slide10Code() {
               <Code className="h-4 w-4" /> com erro
             </div>
             <pre className="whitespace-pre-wrap leading-relaxed" style={{ color: "#c9d1cb" }}>
-{`for i in range(len(a)):
-  `}<span style={{ background: "rgba(242,114,107,0.18)", color: "#f2726b" }}>total =+ a[i]</span>{`
+{`a = [2, 4, 6]
+total = 0
+for value in a:
+    `}<span style={{ background: "rgba(242,114,107,0.18)", color: "#f2726b" }}>total =+ value</span>{`
 print(total)`}
             </pre>
             <div
               className="mt-4 rounded-lg border-l-2 px-3 py-2 text-xs leading-relaxed"
               style={{ borderColor: "#f2726b", background: "rgba(242,114,107,0.08)", color: "#e7b7b3" }}
             >
-              <span className="font-semibold" style={{ color: "#f2726b" }}>Problema:</span> `=+` só atribui o
-              valor atual — `total` nunca acumula. O certo é `+=`.
+              <span className="font-semibold" style={{ color: "#f2726b" }}>Problema:</span> <code>=+</code> substitui
+              o total pelo valor atual. Ao final, imprime 6 em vez da soma 12.
             </div>
           </Panel>
 
@@ -40,9 +42,10 @@ print(total)`}
               <Check className="h-4 w-4" /> corrigido
             </div>
             <pre className="whitespace-pre-wrap leading-relaxed" style={{ color: "#e7eae4" }}>
-{`total = 0
+{`a = [2, 4, 6]
+total = 0
 for value in a:
-  `}<span style={{ color: "var(--color-lime)" }}>total += value</span>{`
+    `}<span style={{ color: "var(--color-lime)" }}>total += value</span>{`
 print(total)`}
             </pre>
             <div
@@ -50,7 +53,7 @@ print(total)`}
               style={{ borderColor: "var(--color-lime)", background: "rgba(255,193,7,0.08)", color: "#d9dcc9" }}
             >
               <span className="font-semibold" style={{ color: "var(--color-lime)" }}>Correção:</span> soma
-              acumulada com `+=`, iterando direto pelos valores.
+              acumulada com <code>+=</code>, preservando o valor das iterações anteriores.
             </div>
           </Panel>
         </div>

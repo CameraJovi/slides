@@ -1,4 +1,5 @@
 import SlideLayout from "../components/SlideLayout"
+import FeatureNote from "../components/FeatureNote"
 import { PhoneMockup, Lead } from "../components/ui"
 import { Copy, Lock, Pix } from "../components/icons"
 
@@ -8,8 +9,7 @@ export default function Slide12SmartPix() {
       <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
         <div className="flex flex-col gap-6">
           <Lead className="max-w-[44ch]">
-            A câmera detecta CPF, e-mail ou celular usados como chave Pix e oferece copiar ou abrir direto
-            no banco.
+            A câmera encontra um possível e-mail ou telefone. Você confere, corrige e copia a chave.
           </Lead>
           <div
             className="flex w-fit items-center gap-3 rounded-full border px-5 py-3"
@@ -18,6 +18,7 @@ export default function Slide12SmartPix() {
             <Lock className="h-5 w-5" />
             <span className="text-base text-white">Sem transação e sem acesso a dados bancários</span>
           </div>
+          <FeatureNote>Abrir banco · simulação<br />Reconhecimento de CPF · previsto</FeatureNote>
         </div>
 
         <PhoneMockup className="mx-auto">
@@ -27,7 +28,7 @@ export default function Slide12SmartPix() {
               <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest" style={{ color: "var(--color-lime)" }}>
                 <Pix className="h-3.5 w-3.5" /> SmartPix
               </span>
-              <span className="font-mono text-[10px]" style={{ color: "var(--color-mute)" }}>ao vivo</span>
+              <span className="font-mono text-[10px]" style={{ color: "var(--color-mute)" }}>exemplo</span>
             </div>
 
             {/* camera viewport detecting a key */}
@@ -39,9 +40,9 @@ export default function Slide12SmartPix() {
                 <div className="absolute -bottom-1 -right-1 h-4 w-4 border-b-2 border-r-2" style={{ borderColor: "var(--color-lime)" }} />
                 <div className="rounded-lg p-4 text-center" style={{ background: "rgba(0,0,0,0.35)" }}>
                   <div className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "var(--color-lime)" }}>
-                    chave detectada
+                    possível chave
                   </div>
-                  <div className="mt-1.5 font-mono text-sm text-white">joao.silva@email.com</div>
+                  <div className="mt-1.5 break-all font-mono text-sm text-white">estudos@example.com</div>
                   <div className="mt-0.5 font-mono text-[10px]" style={{ color: "var(--color-mute)" }}>tipo: e-mail</div>
                 </div>
               </div>

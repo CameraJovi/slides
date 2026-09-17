@@ -1,29 +1,24 @@
 import SlideLayout from "../components/SlideLayout"
+import FeatureNote from "../components/FeatureNote"
 import { Panel, Lead } from "../components/ui"
-import { FileText } from "../components/icons"
 
 export default function Slide08Summary() {
   return (
     <SlideLayout index={8} kicker="Funcionalidade" title="Smart Scan" glow="left">
       <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
-        <Lead>
-          Foto de slide vira resumo estruturado — e um PDF pronto para revisar depois.
-        </Lead>
+        <div className="flex flex-col gap-6">
+          <Lead>Foto de slide vira resumo para revisar no Caderno Inteligente.</Lead>
+          <FeatureNote>Exportação PDF · prevista</FeatureNote>
+        </div>
 
         {/* app-screen mockup with a real (fictional) text preview */}
-        <Panel bare className="w-[440px]">
+        <Panel bare className="w-full max-w-[440px] lg:w-[440px]">
           <div
             className="flex items-center justify-between rounded-t-2xl px-5 py-3"
             style={{ background: "var(--color-surface)" }}
           >
             <span className="font-mono text-xs uppercase tracking-widest" style={{ color: "var(--color-mute)" }}>
               resumo gerado
-            </span>
-            <span
-              className="flex items-center gap-1.5 rounded-md px-2.5 py-1 font-mono text-[11px] font-bold"
-              style={{ background: "var(--color-lime)", color: "var(--color-ink)" }}
-            >
-              <FileText className="h-3.5 w-3.5" /> Exportar PDF
             </span>
           </div>
 

@@ -5,7 +5,7 @@ import { Function, FileText, Board, Cards } from "../components/icons"
 const subjects = [
   { icon: <Function className="h-6 w-6" />, name: "Cálculo", detail: "12 capturas", material: "resoluções · resumos" },
   { icon: <Board className="h-6 w-6" />, name: "História", detail: "8 capturas", material: "resumos · flashcards" },
-  { icon: <FileText className="h-6 w-6" />, name: "Biologia", detail: "15 capturas", material: "resumos · PDF" },
+  { icon: <FileText className="h-6 w-6" />, name: "Biologia", detail: "15 capturas", material: "resumos" },
   { icon: <Cards className="h-6 w-6" />, name: "Física", detail: "6 capturas", material: "flashcards" },
 ]
 
