@@ -1,0 +1,10 @@
+{
+  "description": "Streamline your presentation creation with this intuitive web app designed for teams, enabling collaborative planning and slide design in real-time.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
